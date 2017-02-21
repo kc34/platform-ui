@@ -4,21 +4,46 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-    $("button").click(function(){
+    $("#button1").click(function(){
         $.ajax({
-            url: "demo_test.asp",
+            url: "/ListData?uri=/",
             method: "get",
             success : function(data, status) {
-              alert("Data: " + data + "\nStatus: " + status);
+              // alert("Data: " + data + "\nStatus: " + status);
+              var mydata = JSON.parse(data);
+              $("#uri-select").empty()
+              for (var i = 0; i < mydata.uris.length; i++) {
+                var option = mydata.uris[i];
+                $("#uri-select").append($('<option>', { value: option, text: option }))
+                // var option = document.createElement('option');
+                // option.text = option.value = mydata.uris[i];
+                // select.add(option, 0)
+              }
             }
         });
+    });
+    var mything = $("#year").val();
+    $("#button2").click(function(){
+      var myURI = "/GetData?uri=" + $("#uri-select option:selected").text();
+      $.ajax({
+          url: myURI,
+          method: "get",
+          success : function(data, status) {
+            alert("URL + query string = " + myURI + "\nReceived Data: " + data);
+          }
+      });
     });
 });
 </script>
 </head>
 <body>
+sup
 
-<button>Send an HTTP GET request to a page and get the result back</button>
+<button id="button1">Send an HTTP GET request to a page and get the result back</button>
+
+<select id="uri-select" name="year"></select>
+
+<button id="button2">GO</button>
 
 </body>
 </html>
