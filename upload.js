@@ -9,7 +9,7 @@ httpsender.listData = function() {
 }
 
 httpsender.listData2 = function() {
-  httpsender.sendGet("ListData", httpsender.populateDropDown);
+  httpsender.sendGet("ListData?uri=/", httpsender.populateDropDown);
 }
 
 httpsender.getData = function() {
@@ -24,7 +24,7 @@ httpsender.getData2 = function() {
   var successFunction = function(data, status) {
     httpsender.forwardData({ myURI : myURI, data: data });
   }
-  var myURI = "GetData";
+  var myURI = "GetData?uri=" + $("#uri-select option:selected").text();
   httpsender.sendGet(myURI, successFunction);
 }
 
