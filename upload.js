@@ -9,7 +9,7 @@ httpsender.listData = function() {
 }
 
 httpsender.listData2 = function() {
-  httpsender.sendGet("/ListData.txt", httpsender.populateDropDown);
+  httpsender.sendGet("ListData", httpsender.populateDropDown);
 }
 
 httpsender.getData = function() {
@@ -24,7 +24,7 @@ httpsender.getData2 = function() {
   var successFunction = function(data, status) {
     httpsender.forwardData({ myURI : myURI, data: data });
   }
-  var myURI = "/GetData.txt";
+  var myURI = "GetData";
   httpsender.sendGet(myURI, successFunction);
 }
 
