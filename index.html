@@ -6,12 +6,11 @@
 $(document).ready(function(){
     $("button").click(function(){
         $.ajax({
-            url: "https://www.w3schools.com/jquery/demo_test.asp",
+            url: "demo_test.asp",
             method: "get",
             success : function(data, status) {
               alert("Data: " + data + "\nStatus: " + status);
-            },
-            xhrFields: { withCredentials: true }
+            }
         });
     });
 });
