@@ -2,20 +2,9 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="upload.js"></script>
-<script src="canvas.js"></script>
-<script>
-$(document).ready(function(){
-    httpsender.init({ dataTarget : view });
-    // httpsender.listData()
-    $("#button1").click(httpsender.listData);
-    $("#button1lite").click(httpsender.listData2);
-    $("#button2").click(httpsender.getData);
-    $("#button2lite").click(httpsender.getData2);
-});
+<script src="displaycanvas.js"></script>
+<script src="httpsender.js"></script>
 
-var canvasUpdater = setInterval(view.canvasMainLoop, 16);
-</script>
 </head>
 <body>
 
@@ -40,4 +29,24 @@ var canvasUpdater = setInterval(view.canvasMainLoop, 16);
 </p>
 
 </body>
+
+<script>
+$(document).ready(function() {
+
+  httpsender.init({ dataTarget : displaycanvas });
+  displaycanvas.init();
+
+  // Currently, onload listData is disabled.
+  // httpsender.listData()
+
+  $("#button1").click(httpsender.listData);
+  $("#button2").click(httpsender.getData);
+
+  // Compatibility functions for Github Pages demo
+  $("#button1lite").click(httpsender.listData2);
+  $("#button2lite").click(httpsender.getData2);
+
+});
+</script>
+
 </html>
