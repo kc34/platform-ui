@@ -5,8 +5,12 @@
 <script>
 $(document).ready(function(){
     $("button").click(function(){
-        $.get("demo_test.asp", function(data, status){
-            alert("Data: " + data + "\nStatus: " + status);
+        $.ajax({
+            url: "demo_test.asp",
+            method: "get",
+            success : function(data, status) {
+              alert("Data: " + data + "\nStatus: " + status);
+            }
         });
     });
 });
