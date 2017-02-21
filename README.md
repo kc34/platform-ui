@@ -1,7 +1,9 @@
 # platform-ui
 A UI for the viewing part of the comp410 project.
 
-See the <a href=kc34.github.io/platform-ui>demo</a>.
+See the <a href=https://kc34.github.io/platform-ui>demo</a>.
+
+Alternatively, you can download it and run "python -m SimpleHTTPServer" in a terminal.
 
 # Demo
 Click the "ListData?uri=/ (Github Pages)" button in the Step 0 section.
