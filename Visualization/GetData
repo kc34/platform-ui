@@ -1,0 +1,23 @@
+{
+  "result": {
+    "datasets": [
+      {
+        "datasetName": "NAME_HERE",
+        "metadata" : {
+          "timestamp": "placeholder"
+        },
+        "columnNames": [
+          "COLUMN_NAME_1", "COLUMN_NAME_2"
+        ],
+        "columns": [
+          {
+            "rows": []
+          },
+          {
+            "rows": []
+          }
+        ]
+      }
+    ]
+  }
+}

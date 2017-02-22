@@ -8,9 +8,8 @@ var displaycanvas = window.displaycanvas || {};
  * Starts the display canvas.
  */
 displaycanvas.init = function() {
-  $('#myCanvas').css('background-color', 'rgba(0, 0, 0, 1)');
-  this.text1 = "No request";
-  this.text2 = "No data";
+  document.getElementById("myCanvas").style.backgroundColor = 'rgba(0, 0, 0, 1)';
+  this.text = "No data";
   this.draw_();
 }
 
@@ -18,9 +17,7 @@ displaycanvas.init = function() {
  * This method is used to send data into the display canvas.
  */
 displaycanvas.receiveData = function(data) {
-  console.log("Setting text!");
-  this.text1 = "GET " + data.myURI;
-  this.text2 = "DATA: " + data.data;
+  this.text = JSON.stringify(data);
   this.draw_();
 }
 
@@ -31,8 +28,27 @@ displaycanvas.draw_ = function() {
   var canvas = document.getElementById("myCanvas");
   var ctx = canvas.getContext("2d");
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.font = "30px Arial";
+  ctx.font = "15px monospace";
   ctx.fillStyle = 'white';
-  ctx.fillText(this.text1, 10, 50);
-  ctx.fillText(this.text2, 10, 100);
+  var i = 30;
+  var j = 0;
+  var indent_level = 0;
+  for (var x = 0; x < this.text.length; x++) {
+    if (this.text[x] == "}" || this.text[x] == "]") {
+      i += 30
+      indent_level -= 1;
+      j = indent_level * 40;
+    }
+    ctx.fillText(this.text[x], j, i);
+    if (this.text[x] == "{" || this.text[x] == "[") {
+      i += 30
+      indent_level += 1;
+      j = indent_level * 40;
+    } else if (this.text[x] == ",") {
+      i += 30
+      j = indent_level * 40;
+    } else {
+      j = j + 15;
+    }
+  }
 }

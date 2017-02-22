@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="displaycanvas.js"></script>
 <script src="httpsender.js"></script>
 <script src="Scripts/chumbucket/boot.js"></script>
@@ -33,7 +32,7 @@
 </p>
 
 <p>
-  Step 3: <canvas id="myCanvas" width=800 height=600></canvas>
+  Step 3: <canvas id="myCanvas" width=800 height=800></canvas>
 </p>
 
 </body>
@@ -42,10 +41,7 @@
 
 chumbucket.config = {};
 document.addEventListener('DOMContentLoaded', function() {
-    chumbucket.boot(document, chumbucket.config);
-});
-
-$(document).ready(function() {
+  chumbucket.boot(document, chumbucket.config);
 
   httpsender.init({ dataTarget : displaycanvas });
   displaycanvas.init();
@@ -53,14 +49,15 @@ $(document).ready(function() {
   // Currently, onload listData is disabled.
   // httpsender.listData()
 
-  $("#button1").click(httpsender.listData);
-  $("#button2").click(httpsender.getData);
+  document.getElementById("button1").onclick = httpsender.listData;
+  document.getElementById("button2").onclick = httpsender.getData;
 
   // Compatibility functions for Github Pages demo
-  $("#button1lite").click(httpsender.listData2);
-  $("#button2lite").click(httpsender.getData2);
+  document.getElementById("button1lite").onclick = httpsender.listData2;
+  document.getElementById("button2lite").onclick = httpsender.getData2;
 
 });
+
 </script>
 
 </html>

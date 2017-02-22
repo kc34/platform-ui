@@ -15,31 +15,20 @@ httpsender.init = function(config) {
  * Sends the get request: GET /ListData?uri=/
  */
 httpsender.listData = function() {
-  httpsender._http.get("ListData").then(httpsender.populateDropDown_, function(fuck) {console.log(fuck)});
+  httpsender._http.get("Visualization/ListData").then(httpsender.populateDropDown_, function(fuck) {console.log(fuck)});
 }
 
 /**
  * Sends the get request: GET /GetData?uri= ...
  */
 httpsender.getData = function() {
-  var successFunction = function(data, status) {
-    httpsender.forwardData_({ myURI : myURI, data: data });
+  var successFunction = function(data) {
+    console.log(data);
+    httpsender.forwardData_(data["_result"]);
   }
-  var myURI = "/GetData?uri=" + $("#uri-select option:selected").text();
-  httpsender.sendGet_(myURI, successFunction);
-}
-
-/**
- * Helper function to send a GET request
- */
-httpsender.sendGet_ = function(myURI, successFunction) {
-  $.ajax(
-    {
-      url : myURI,
-      method : "get",
-      success : successFunction
-    }
-  );
+  var e = document.getElementById("uri-select");
+  httpsender._http.get("Visualization/GetData", { "uri" : e.options[e.selectedIndex].value })
+    .then(successFunction, function(fuck) {console.log(fuck)});
 }
 
 /**
@@ -47,10 +36,10 @@ httpsender.sendGet_ = function(myURI, successFunction) {
  */
 httpsender.populateDropDown_ = function(data) {
   var mydata = data["_result"];
-  $("#uri-select").empty()
+  removeOptions(document.getElementById("uri-select"));
   for (var i = 0; i < mydata.uris.length; i++) {
     var option = mydata.uris[i];
-    $("#uri-select").append($('<option>', { value: option, text: option }))
+    document.getElementById("uri-select")[i] = new Option(option, option);
   }
 }
 
@@ -67,17 +56,30 @@ httpsender.forwardData_ = function(data) {
  * Probably won't be used in the final product, but useful for Github Page demo
  */
 httpsender.listData2 = function() {
-  httpsender._http.get("platform-ui/ListData").then(httpsender.populateDropDown_, function(fuck) {console.log(fuck)});
+  httpsender._http.get("Visualization/platform-ui/ListData").then(httpsender.populateDropDown_, function(fuck) {console.log(fuck)});
 }
 
 /**
  * Same as getData, but sends it without the / in the beginning.
  * Probably won't be used in the final product, but useful for Github Page demo
  */
+
 httpsender.getData2 = function() {
-  var successFunction = function(data, status) {
-    httpsender.forwardData_({ myURI : myURI, data: data });
+  var successFunction = function(data) {
+    console.log(data);
+    httpsender.forwardData_(data["_result"]);
   }
-  var myURI = "GetData?uri=" + $("#uri-select option:selected").text();
-  httpsender.sendGet_(myURI, successFunction);
+  var e = document.getElementById("uri-select");
+  httpsender._http.get("Visualization/platform-ui/GetData", { "uri" : e.options[e.selectedIndex].value })
+    .then(successFunction, function(fuck) {console.log(fuck)});
+}
+
+
+function removeOptions(selectbox)
+{
+    var i;
+    for(i = selectbox.options.length - 1 ; i >= 0 ; i--)
+    {
+        selectbox.remove(i);
+    }
 }
