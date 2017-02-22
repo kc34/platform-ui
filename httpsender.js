@@ -56,7 +56,7 @@ httpsender.forwardData_ = function(data) {
  * Probably won't be used in the final product, but useful for Github Page demo
  */
 httpsender.listData2 = function() {
-  httpsender._http.get("Visualization/platform-ui/ListData").then(httpsender.populateDropDown_, function(fuck) {console.log(fuck)});
+  httpsender._http.get("platform-ui/Visualization/ListData").then(httpsender.populateDropDown_, function(fuck) {console.log(fuck)});
 }
 
 /**
@@ -70,7 +70,7 @@ httpsender.getData2 = function() {
     httpsender.forwardData_(data["_result"]);
   }
   var e = document.getElementById("uri-select");
-  httpsender._http.get("Visualization/platform-ui/GetData", { "uri" : e.options[e.selectedIndex].value })
+  httpsender._http.get("platform-ui/Visualization/GetData", { "uri" : e.options[e.selectedIndex].value })
     .then(successFunction, function(fuck) {console.log(fuck)});
 }
 
