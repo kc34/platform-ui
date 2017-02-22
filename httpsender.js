@@ -15,7 +15,6 @@ httpsender.init = function(config) {
  * Sends the get request: GET /ListData?uri=/
  */
 httpsender.listData = function() {
-  // httpsender.sendGet_("/ListData?uri=/", httpsender.populateDropDown_);
   httpsender._http.get("ListData").then(httpsender.populateDropDown_, function(fuck) {console.log(fuck)});
 }
 
@@ -68,7 +67,7 @@ httpsender.forwardData_ = function(data) {
  * Probably won't be used in the final product, but useful for Github Page demo
  */
 httpsender.listData2 = function() {
-  httpsender.sendGet_("ListData?uri=/", httpsender.populateDropDown_);
+  httpsender._http.get("platform-io/ListData").then(httpsender.populateDropDown_, function(fuck) {console.log(fuck)});
 }
 
 /**
