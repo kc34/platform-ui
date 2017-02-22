@@ -2,7 +2,7 @@
 <html>
 <head>
 <script src="displaycanvas.js"></script>
-<script src="httpsender.js"></script>
+<script src="visualization_ui.js"></script>
 <script src="Scripts/chumbucket/boot.js"></script>
 <script src="Scripts/chumbucket/util.js"></script>
 <script src="Scripts/chumbucket/entity_uri.js"></script>
@@ -16,19 +16,27 @@
 <body>
 
 <p>
-  Step 0: Load data
-  <button id="button1">/ListData?=/</button>
-  <button id="button1lite">ListData?=/ (Github Pages)</button>
+    Step -1: Select search directory.
+    <select id="search-uri-select">
+        <option value="/">/</option>
+    </select>
 </p>
 
 <p>
-  Step 1: Select URI <select id="uri-select" name="year"></select>
+  Step 0: Load data
+  <button id="list-data-btn">/ListData?=/</button>
+  <button id="list-data-btn-lite">ListData?=/ (Github Pages)</button>
+</p>
+
+<p>
+  Step 1: Select URI
+  <select id="retrieve-uri-select"></select>
 </p>
 
 <p>
   Step 2:
-  <button id="button2">GO</button>
-  <button id="button2lite">GO (Github Pages)</button>
+  <button id="get-data-btn">GO</button>
+  <button id="get-data-btn-lite">GO (Github Pages)</button>
 </p>
 
 <p>
@@ -41,21 +49,20 @@
 
 chumbucket.config = {};
 document.addEventListener('DOMContentLoaded', function() {
-  chumbucket.boot(document, chumbucket.config);
+    // chumbucket.boot(document, chumbucket.config);
 
-  httpsender.init({ dataTarget : displaycanvas });
-  displaycanvas.init();
+    visualizationUi.init({ dataTarget : displaycanvas });
+    displaycanvas.init();
 
-  // Currently, onload listData is disabled.
-  // httpsender.listData()
+    // Currently, onload listData is disabled.
+    // visualizationUi.listData() // lists the data on load!
 
-  document.getElementById("button1").onclick = httpsender.listData;
-  document.getElementById("button2").onclick = httpsender.getData;
+    document.getElementById("list-data-btn").onclick = visualizationUi.listData;
+    document.getElementById("get-data-btn").onclick = visualizationUi.getData;
 
-  // Compatibility functions for Github Pages demo
-  document.getElementById("button1lite").onclick = httpsender.listData2;
-  document.getElementById("button2lite").onclick = httpsender.getData2;
-
+    // Compatibility functions for Github Pages demo
+    document.getElementById("list-data-btn-lite").onclick = visualizationUi.listData2;
+    document.getElementById("get-data-btn-lite").onclick = visualizationUi.getData2;
 });
 
 </script>

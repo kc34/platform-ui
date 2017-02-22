@@ -1,16 +1,16 @@
 /**
- * JS code related to the canvas where you display things on.
- * Currently just a stub.
- */
+* JS code related to the canvas where you display things on.
+* Currently just a stub.
+*/
 var displaycanvas = window.displaycanvas || {};
 
 /**
  * Starts the display canvas.
  */
 displaycanvas.init = function() {
-  document.getElementById("myCanvas").style.backgroundColor = 'rgba(0, 0, 0, 1)';
-  this.text = "No data";
-  this.draw_();
+    document.getElementById("myCanvas").style.backgroundColor = 'rgba(0, 0, 0, 1)';
+    this.text = "No data";
+    this.draw_();
 }
 
 /**
@@ -39,7 +39,7 @@ displaycanvas.draw_ = function() {
       indent_level -= 1;
       j = indent_level * 40;
     }
-    ctx.fillText(this.text[x], j, i);
+    ctx.fillText(this.text[x], j + 10, i + 10);
     if (this.text[x] == "{" || this.text[x] == "[") {
       i += 30
       indent_level += 1;
