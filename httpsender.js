@@ -67,7 +67,7 @@ httpsender.forwardData_ = function(data) {
  * Probably won't be used in the final product, but useful for Github Page demo
  */
 httpsender.listData2 = function() {
-  httpsender._http.get("platform-io/ListData").then(httpsender.populateDropDown_, function(fuck) {console.log(fuck)});
+  httpsender._http.get("platform-ui/ListData").then(httpsender.populateDropDown_, function(fuck) {console.log(fuck)});
 }
 
 /**
