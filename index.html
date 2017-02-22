@@ -4,6 +4,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="displaycanvas.js"></script>
 <script src="httpsender.js"></script>
+<script src="Scripts/chumbucket/boot.js"></script>
+<script src="Scripts/chumbucket/util.js"></script>
+<script src="Scripts/chumbucket/entity_uri.js"></script>
+<script src="Scripts/chumbucket/http_client.js"></script>
+<script src="Scripts/chumbucket/storage_client.js"></script>
+<script src="Scripts/chumbucket/storage_ui.js"></script>
+<script src="Scripts/chumbucket/upload_ui.js"></script>
+<script src="Scripts/chumbucket/util.js"></script>
 
 </head>
 <body>
@@ -31,6 +39,12 @@
 </body>
 
 <script>
+
+chumbucket.config = {};
+document.addEventListener('DOMContentLoaded', function() {
+    chumbucket.boot(document, chumbucket.config);
+});
+
 $(document).ready(function() {
 
   httpsender.init({ dataTarget : displaycanvas });

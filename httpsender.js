@@ -8,13 +8,15 @@ var httpsender = window.httpsender || {};
  */
 httpsender.init = function(config) {
   this.config = config;
+  this._http = new chumbucket.HTTPClient();
 }
 
 /**
  * Sends the get request: GET /ListData?uri=/
  */
 httpsender.listData = function() {
-  httpsender.sendGet_("/ListData?uri=/", httpsender.populateDropDown_);
+  // httpsender.sendGet_("/ListData?uri=/", httpsender.populateDropDown_);
+  httpsender._http.get("ListData").then(httpsender.populateDropDown_, function(fuck) {console.log(fuck)});
 }
 
 /**
@@ -44,8 +46,8 @@ httpsender.sendGet_ = function(myURI, successFunction) {
 /**
  * Fills in the dropdown menu from a JSON object of { uris: [..., ..., ...,] }
  */
-httpsender.populateDropDown_ = function(data, status) {
-  var mydata = JSON.parse(data);
+httpsender.populateDropDown_ = function(data) {
+  var mydata = data["_result"];
   $("#uri-select").empty()
   for (var i = 0; i < mydata.uris.length; i++) {
     var option = mydata.uris[i];

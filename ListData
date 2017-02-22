@@ -1,3 +1,1 @@
-{
-  "uris": ["/company1/person1/dataset1", "/company1/person1/dataset2", "/company1/person2/dataset1", "/company2/person1/dataset1"]
-}
+{"result" : {"uris": ["/company1/person1/dataset1", "/company1/person1/dataset2", "/company1/person2/dataset1", "/company2/person1/dataset1"]}}
