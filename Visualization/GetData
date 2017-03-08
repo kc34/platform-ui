@@ -2,21 +2,17 @@
   "result": {
     "datasets": [
       {
-        "datasetName": "NAME_HERE",
+        "datasetName": "Example",
         "metadata" : {
           "timestamp": "placeholder"
         },
         "columnNames": [
           "COLUMN_NAME_1", "COLUMN_NAME_2"
         ],
-        "columns": [
-          {
-            "rows": []
-          },
-          {
-            "rows": []
-          }
-        ]
+        "columnData": {
+            "COLUMN_NAME_1" : [1, 2, 3],
+            "COLUMN_NAME_2" : [1, 2, 3]
+        }
       }
     ]
   }

@@ -15,56 +15,50 @@
 </head>
 <body>
 
-<p>
-    Step -1: Select search directory.
-    <select id="search-uri-select">
-        <option value="/">/</option>
-    </select>
-</p>
+    <p>
+        Step -1: Select search directory.
+        <select id="search-uri-select">
+            <option value="/">/</option>
+        </select>
+    </p>
 
-<p>
-  Step 0: Load data
-  <button id="list-data-btn">/ListData?=/</button>
-  <button id="list-data-btn-lite">ListData?=/ (Github Pages)</button>
-</p>
+    <p>
+        Step 0: Load data
+        <button id="list-data-btn">Search Directory</button>
+    </p>
 
-<p>
-  Step 1: Select URI
-  <select id="retrieve-uri-select"></select>
-</p>
+    <p>
+        Step 1: Select URI
+        <select id="retrieve-uri-select"></select>
+    </p>
 
-<p>
-  Step 2:
-  <button id="get-data-btn">GO</button>
-  <button id="get-data-btn-lite">GO (Github Pages)</button>
-</p>
+    <p>
+        Step 2:
+        <button id="get-data-btn">GO</button>
+    </p>
 
-<p>
-  Step 3: <canvas id="myCanvas" width=800 height=800></canvas>
-</p>
+    <p>
+        Step 3:
+    </p>
 
-</body>
+    <div id="resultsDiv"></div>
 
-<script>
+    <script>
 
-chumbucket.config = {};
-document.addEventListener('DOMContentLoaded', function() {
-    // chumbucket.boot(document, chumbucket.config);
+    chumbucket.config = {};
+    document.addEventListener('DOMContentLoaded', function() {
+        // chumbucket.boot(document, chumbucket.config);
 
-    visualizationUi.init({ dataTarget : displaycanvas });
-    displaycanvas.init();
+        visualizationUi.init({ dataTarget : displaycanvas });
+        displaycanvas.init();
 
-    // Currently, onload listData is disabled.
-    // visualizationUi.listData() // lists the data on load!
+        // Currently, onload listData is disabled.
+        // visualizationUi.listData() // lists the data on load!
 
-    document.getElementById("list-data-btn").onclick = visualizationUi.listData;
-    document.getElementById("get-data-btn").onclick = visualizationUi.getData;
+        document.getElementById("list-data-btn").onclick = visualizationUi.listData;
+        document.getElementById("get-data-btn").onclick = visualizationUi.getData;
+    });
 
-    // Compatibility functions for Github Pages demo
-    document.getElementById("list-data-btn-lite").onclick = visualizationUi.listData2;
-    document.getElementById("get-data-btn-lite").onclick = visualizationUi.getData2;
-});
-
-</script>
+    </script>
 
 </html>
