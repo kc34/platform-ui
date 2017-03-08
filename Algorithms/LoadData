@@ -1,0 +1,7 @@
+{
+    "result" : {
+        "algorithms" : ["k-cluster", "knn", "bogosort"],
+        "inputTables" : ["/company1/person1/dataset1"],
+        "outputTables" : ["/company1/person1/dataset10"]
+    }
+}

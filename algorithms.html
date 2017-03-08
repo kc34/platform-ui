@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <script src="Scripts/chumbucket/boot.js"></script>
+        <script src="Scripts/chumbucket/util.js"></script>
+        <script src="Scripts/chumbucket/entity_uri.js"></script>
+        <script src="Scripts/chumbucket/http_client.js"></script>
+        <script src="Scripts/chumbucket/storage_client.js"></script>
+        <script src="Scripts/chumbucket/storage_ui.js"></script>
+        <script src="Scripts/chumbucket/upload_ui.js"></script>
+        <script src="Scripts/chumbucket/util.js"></script>
+
+        <script src="Scripts/algorithms_ui.js"></script>
+    </head>
+    <body>
+        <p>
+            Step 0: Load algorithms and tables.
+            <button id="load-button">Load</button>
+        </p>
+        <p>
+            Step 1: Select algorithm/script.
+            <select id="algorithm-select-box"></select>
+        </p>
+        <p>
+            Step 2: Select input tables.
+            <select id="input-table-select-box"></select>
+        </p>
+        <p>
+            Step 3: Select output tables.
+            <select id="output-table-select-box"></select>
+        </p>
+        <p>
+            Step 4: GO button.
+            <button id="go-button">Go</button>
+        </p>
+        <p>
+            Step 5: View job status.
+            <div id="statis-viewer-div"></div>
+        </p>
+    </body>
+
+    <script>
+        var options = {
+            "loadButton" : "#load-button",
+            "algorithmSelectBox" : "#algorithm-select-box",
+            "inputTableSelectBox" : "#input-table-select-box",
+            "outputTableSelectBox" : "#output-table-select-box",
+            "goButton" : "#go-button",
+            "statusViewerDiv" : "#status-viewer-div"
+        }
+        var myAlgorithmsUi = new AlgorithmsUi(document, options);
+        myAlgorithmsUi.boot();
+    </script>
+</html>

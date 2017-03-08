@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="Scripts/visualization/displaycanvas.js"></script>
+<script src="Scripts/visualization/visualization_ui.js"></script>
+<script src="Scripts/chumbucket/boot.js"></script>
+<script src="Scripts/chumbucket/util.js"></script>
+<script src="Scripts/chumbucket/entity_uri.js"></script>
+<script src="Scripts/chumbucket/http_client.js"></script>
+<script src="Scripts/chumbucket/storage_client.js"></script>
+<script src="Scripts/chumbucket/storage_ui.js"></script>
+<script src="Scripts/chumbucket/upload_ui.js"></script>
+<script src="Scripts/chumbucket/util.js"></script>
+
+</head>
+<body>
+
+    <p>
+        Step -1: Select search directory.
+        <select id="search-uri-select">
+            <option value="/">/</option>
+        </select>
+    </p>
+
+    <p>
+        Step 0: Load data
+        <button id="list-data-btn">Search Directory</button>
+    </p>
+
+    <p>
+        Step 1: Select URI
+        <select id="retrieve-uri-select"></select>
+    </p>
+
+    <p>
+        Step 2:
+        <button id="get-data-btn">GO</button>
+    </p>
+
+    <p>
+        Step 3:
+    </p>
+
+    <div id="resultsDiv"></div>
+
+    <script>
+
+    chumbucket.config = {};
+    document.addEventListener('DOMContentLoaded', function() {
+        // chumbucket.boot(document, chumbucket.config);
+
+        visualizationUi.init({ dataTarget : displaycanvas });
+        displaycanvas.init();
+
+        // Currently, onload listData is disabled.
+        // visualizationUi.listData() // lists the data on load!
+
+        document.getElementById("list-data-btn").onclick = visualizationUi.listData;
+        document.getElementById("get-data-btn").onclick = visualizationUi.getData;
+    });
+
+    </script>
+
+</html>
