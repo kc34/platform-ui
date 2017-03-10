@@ -19,15 +19,30 @@ AlgorithmsUi.prototype.boot = function() {
         AlgorithmsUi.reloadSelectBox(ref._outputTableSelectBox, mydata['outputTables']);
     }
 
-    var loadFailure = function(result) {
+    var failure = function(result) {
         console.log(result);
     }
 
     this._loadButton.onclick = function() {
         var query = { 'uri' : 'placeholer' };
         ref._http.get('Algorithms/LoadData', query)
-            .then(loadSuccess, loadFailure);
+            .then(loadSuccess, failure);
     }
+
+    var goSuccess = function(result) {
+        ref._statusViewerDiv.innerHTML = JSON.stringify(result);
+    }
+
+    this._goButton.onclick = function() {
+        var query = {
+            'algorithm' : AlgorithmsUi.getSelected(ref._algorithmSelectBox),
+            'inputTable' : AlgorithmsUi.getSelected(ref._inputTableSelectBox),
+            'outputTable' : AlgorithmsUi.getSelected(ref._outputTableSelectBox)};
+        ref._http.get('Algorithms/SubmitJob', query)
+            .then(goSuccess, failure);
+    }
+
+
 }
 
 AlgorithmsUi.reloadSelectBox = function(selectBox, data) {
@@ -40,4 +55,8 @@ AlgorithmsUi.reloadSelectBox = function(selectBox, data) {
         var option = data[i];
         selectBox[i] = new Option(option, option);
     }
+}
+
+AlgorithmsUi.getSelected = function(selectBox) {
+    return selectBox.options[selectBox.selectedIndex].value;
 }
